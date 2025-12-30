@@ -13,7 +13,7 @@ response = openai.chat.completions.create(
     messages=[
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "Hello! How can you assist me today?"},
-    ], max_tokens=100
+    ]
 )   
 
 print(response.choices[0].message.content)

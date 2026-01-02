@@ -28,9 +28,18 @@ class Website:
         if soup.body:
             for irrelevant in soup.body(["script", "style", "img", "input"]):
                 irrelevant.decompose()
-            self.text = soup.body.get_text(separator="\n", strip=True)#[:2_000]
+            self.text = soup.body.get_text(separator="\n", strip=True)[:1_000]
         else:
             self.text = ""
+
+    def get_links(self):
+        """
+        Return a list of all hyperlinks found on this Website
+        """
+        response = requests.get(self.url, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"})
+        soup = BeautifulSoup(response.content, "html.parser")
+        links = [link.get("href") for link in soup.find_all("a")]
+        return [link for link in links if link and link.startswith("http")]
 
     def __str__(self):
         """

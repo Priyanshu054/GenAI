@@ -8,6 +8,7 @@ dependencies = [
     "bs4>=0.0.2",
     "dotenv>=0.9.9",
     "google-genai>=1.56.0",
+    "gradio>=6.2.0",
     "ipykernel>=7.1.0",
     "openai>=2.14.0",
     "requests>=2.32.5",
